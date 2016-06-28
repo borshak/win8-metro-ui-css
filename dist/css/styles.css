@@ -67,12 +67,6 @@ body {
     position: absolute;
     z-index: -1; }
 
-h1 {
-  color: white;
-  font-size: 48pt;
-  margin-bottom: 100px;
-  flex-basis: 100%; }
-
 .tiles {
   padding: 0;
   margin: 0 auto;
@@ -81,6 +75,16 @@ h1 {
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 960px; }
+  @media screen and (max-width: 980px) {
+    .tiles {
+      width: 100%;
+      background-color: rgba(0, 128, 0, 0.25); } }
+  .tiles h1 {
+    color: white;
+    font-size: 48pt;
+    margin-bottom: 100px;
+    flex-basis: 100%;
+    margin: 0 0 95px; }
   .tiles .tile {
     background: tomato;
     padding: 0;

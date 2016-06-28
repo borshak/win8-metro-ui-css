@@ -15,7 +15,7 @@ $top-space: 100px
 $main-background-color: #162a60
 $main-text-color: white
 
-$break-medium: 960px
+$break-medium: $tile-size-basic * 6 + $gutter * 8
 
 
 body
@@ -34,12 +34,6 @@ body
     z-index: -1
 
 
-h1
-  color: $main-text-color
-  font-size: 48pt
-  margin-bottom: $top-space
-  flex-basis: 100%
-
 .tiles
   padding: 0
   margin: 0 auto
@@ -49,7 +43,19 @@ h1
   display: flex
   flex-wrap: wrap
   justify-content: flex-start
+
   width: $tile-size-basic * 6 + $gutter * 6
+  @media screen and (max-width: $break-medium)
+    width: 100%
+    //justify-content: space-around
+    background-color: rgba(green, 0.25)
+
+  h1
+    color: $main-text-color
+    font-size: 48pt
+    margin-bottom: $top-space
+    flex-basis: 100%
+    margin: 0  0 $top-space -$gutter/2
 
   .tile
     background: tomato
