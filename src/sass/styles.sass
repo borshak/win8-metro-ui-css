@@ -1,5 +1,6 @@
 @import "includes/reset"
 @import "includes/font"
+@import "includes/graphics"
 
 @include declare-font-face('Helvetica Neue', 'Helvetica_Neue_UltraLight', 100)
 
@@ -20,6 +21,18 @@ $break-medium: 960px
 body
   background-color: $main-background-color
   font-family: $font-stack
+  padding: $top-space 0 $top-space * 1.5 0
+  &:after
+    content: ""
+    @include body-pattern()
+    opacity: 0.01
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    position: absolute
+    z-index: -1
+
 
 h1
   color: $main-text-color
@@ -29,7 +42,7 @@ h1
 
 .tiles
   padding: 0
-  margin: $top-space auto $top-space * 1.5 auto;
+  margin: 0 auto
 
   list-style: none
 
