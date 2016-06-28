@@ -1,0 +1,101 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../font/Helvetica_Neue_UltraLight/Helvetica_Neue_UltraLight.eot");
+  src: url("../font/Helvetica_Neue_UltraLight/Helvetica_Neue_UltraLight.woff2") format("woff2"), url("../font/Helvetica_Neue_UltraLight/Helvetica_Neue_UltraLight.woff") format("woff"), url("../font/Helvetica_Neue_UltraLight/Helvetica_Neue_UltraLight.ttf") format("truetype"), url("../font/Helvetica_Neue_UltraLight/Helvetica_Neue_UltraLight.svg#Helvetica Neue") format("svg"), url("../font/Helvetica_Neue_UltraLight/Helvetica_Neue_UltraLight.eot?#iefix") format("embedded-opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-stretch: normal; }
+
+body {
+  background-color: #162a60;
+  font-family: "Helvetica Neue", Helvetica, sans-serif; }
+
+h1 {
+  color: white;
+  font-size: 48pt;
+  margin-bottom: 100px;
+  flex-basis: 100%; }
+
+.tiles {
+  padding: 0;
+  margin: 100px auto 150px auto;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 960px; }
+  .tiles .tile {
+    background: tomato;
+    padding: 0;
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    line-height: 150px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    flex-shrink: 0; }
+  .tiles .tile.wide {
+    width: 310px; }
+  .tiles .tile.extra-wide {
+    width: 470px; }
+  .tiles .tile.small {
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    font-size: 1.5em; }
+  .tiles .tile.small.floated {
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: right;
+    background-color: rgba(255, 255, 0, 0.25);
+    font-size: 10pt;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.75); }
