@@ -61,6 +61,7 @@ body
 
   .tile
     padding: 0
+    position: relative
 
     width: $tile-size-basic
     height: $tile-size-basic
@@ -70,7 +71,7 @@ body
     line-height: $tile-size-basic
     color: white
     font-weight: bold
-    font-size: 36pt
+    font-size: 24pt
     text-align: center
 
     flex-shrink: 0
@@ -152,70 +153,64 @@ body
 
 .interactive
   cursor: pointer
-  outline: 1px solid transparent
-  transform: rotateY(0)
-  transition: outline-color 0.33s, transform 0.33s
-  &:hover
+  transform-style: preserve-3d
+  perspective: $perspective
+
+  &.wide
+    perspective: $perspective * 2
+
+  &.extra-wide
+    perspective: $perspective * 4
+
+  & .front, & .back
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    outline: 1px solid transparent
+    backface-visibility: hidden
+    transition: outline-color 0.5s, transform 0.5s
+
+  & .front
+    z-index: 2
+
+  & .back
+    z-index: 1
+    transform: rotateY(180deg)
+
+  &:hover .front, &:hover .back
     outline-color: rgba(white, 0.85)
-    transform: perspective(200px) rotateY(-180deg)
+  &:hover .front
+    transform: rotateY(-180deg)
+  &:hover .back
+    transform: rotateY(0)
 
-  .wide &:active
-    transform: perspective(20px) rotateY(-180deg)
 
-  &.home
+  &.home .front, &.home .back
     background-color: $color-home
-    // &:hover
-    //   outline-color: rgba($color-home, 0.5)
-  &.about
+  &.about .front, &.about .back
     background-color: $color-about
-    // &:hover
-    //   outline-color: rgba($color-about, 0.5)
-  &.portfolio
+  &.portfolio .front, &.portfolio .back
     background-color: $color-portfolio
-    // &:hover
-    //   outline-color: rgba($color-portfolio, 0.5)
-  &.photos
+  &.photos .front, &.photos .back
     background-color: $color-photos
-    // &:hover
-    //   outline-color: rgba($color-photos, 0.5)
-  &.testimomials
+  &.testimomials .front, &.testimomials .back
     background-color: $color-testimomials
-    // &:hover
-    //   outline-color: rgba($color-testimomials, 0.5)
-  &.hr
+  &.hr .front, &.hr .back
     background-color: $color-hr
-    // &:hover
-    //   outline-color: rgba($color-hr, 0.5)
-  &.blog
+  &.blog .front, &.blog .back
     background-color: $color-blog
-    // &:hover
-    //   outline-color: rgba($color-blog, 0.5)
-  &.contacts
+  &.contacts .front, &.contacts .back
     background-color: $color-contacts
-    // &:hover
-    //   outline-color: rgba($color-contacts, 0.5)
 
-  &.facebook
+
+  &.facebook .front, &.facebook .back
     background-color: $color-facebook
     @include facebook-icon()
-    // &:hover
-    //   outline-color: rgba($color-facebook, 0.5)
-  &.twitter
+  &.twitter .front, &.twitter .back
     background-color: $color-twitter
     @include twitter-icon()
-    // &:hover
-    //   outline-color: rgba($color-twitter, 0.5)
-  &.google
+  &.google .front, &.google .back
     background-color: $color-google
     @include google-icon()
-    // &:hover
-    //   outline-color: rgba($color-google, 0.5)
-
-
-// .tile.wide.interactive
-//     &:active
-//     transform: perspective(400px) rotateY(-180deg)
-
-// .tile.extra-wide.interactive
-//     &:active
-//     transform: perspective(400px) rotateY(-180deg)
