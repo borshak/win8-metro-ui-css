@@ -24,7 +24,8 @@ $break-2: $tile-size-basic * 3 + $gutter * 3 + 20
 body
   background-color: $main-background-color
   font-family: $font-stack
-  padding: $top-space 0 $top-space * 1.5 0
+  position: relative
+  padding: $top-space 0 $top-space * 1.6 0
   &:after
     content: ""
     @include body-pattern()
@@ -81,14 +82,14 @@ body
     line-height: $tile-size-basic
     color: white
     font-weight: bold
-    font-size: 3em
+    font-size: 36pt
     text-align: center
 
     flex-shrink: 0
 
     // Reorder tiles on small screens
 
-    @for $i from 1 through 12
+    @for $i from 1 through 10
       &[data-order='#{$i}']
         order: $i*10
 
@@ -112,36 +113,62 @@ body
       &[data-order='8']
         order: 80
 
+    &.wide
+      width: $tile-size-basic * 2 + $gutter
 
-  .tile.wide
-    width: $tile-size-basic * 2 + $gutter
+    &.extra-wide
+      width: $tile-size-basic * 3 + $gutter * 2
+      @media screen and (max-width: $break-2)
+        width: $tile-size-basic * 2 + $gutter * 1
 
-  .tile.extra-wide
-    width: $tile-size-basic * 3 + $gutter * 2
-    @media screen and (max-width: $break-2)
-      width: $tile-size-basic * 2 + $gutter * 1
+    &.inline
+      width: auto
+      height: $tile-size-basic / 2 + $gutter
+      margin: $gutter / 2 -$gutter / 2
+      background-color: transparent
+      display: flex
+      flex-wrap: wrap
+      @media screen and (max-width: $break-2)
+        height: $tile-size-basic + $gutter
+        width: $tile-size-basic + $gutter
+        margin: 0
 
-  .tile.small
-    width: $tile-size-basic / 2
-    height: $tile-size-basic / 2
-    line-height: $tile-size-basic / 2
-    font-size: 1.5em
-    @media screen and (max-width: $break-2)
-      width: $tile-size-basic / 2 - 5
-      height: $tile-size-basic / 2 - 5
+      & .small
+        background-color: tomato
+        width: $tile-size-basic / 2
+        height: $tile-size-basic / 2
+        margin: $gutter / 2
+        line-height: $tile-size-basic / 2
+        font-size: 14pt
+        @media screen and (max-width: $break-2)
+          width: $tile-size-basic / 2 - $gutter / 2
+          height: $tile-size-basic / 2 - $gutter / 2
 
-  .tile.small.floated
-    flex-grow: 1
-    flex-shrink: 1
 
-    text-align: right
-    //background-color: rgba(yellow, 0.25)
-    background-color: transparent;
-    font-size: 10pt
-    letter-spacing: 0.5px
-    color: rgba($main-text-color, 0.75)
+    // &.small
+    //   width: $tile-size-basic / 2
+    //   height: $tile-size-basic / 2
+    //   line-height: $tile-size-basic / 2
+    //   font-size: 1.5em
+    //   @media screen and (max-width: $break-2)
+    //     width: $tile-size-basic / 2 - 5
+    //     height: $tile-size-basic / 2 - 5
 
-    .copyright
-      line-height: 1.3
-      display: inline-block
-      vertical-align: middle
+    &.floated
+      flex-grow: 1
+      flex-shrink: 1
+
+      height: $tile-size-basic / 2
+      line-height: $tile-size-basic / 2
+
+      text-align: right
+      //background-color: rgba(yellow, 0.25)
+      background-color: transparent;
+      font-size: 10pt
+      letter-spacing: 0.5px
+      color: rgba($main-text-color, 0.75)
+
+.copyright
+  line-height: 1.3
+  display: inline-block
+  vertical-align: middle
