@@ -12,6 +12,7 @@ body
   font-family: $font-stack
   position: relative
   padding: $top-space 0 $top-space * 1.6 0
+  letter-spacing: 1px
   &:after
     content: ""
     @include body-pattern()
@@ -68,7 +69,7 @@ body
     line-height: $tile-size-basic
     color: white
     font-weight: bold
-    font-size: 24pt
+    font-size: 14pt
     text-align: center
 
     flex-shrink: 0
@@ -138,7 +139,6 @@ body
 
       text-align: right
       font-size: 10pt
-      letter-spacing: 0.5px
       color: rgba($main-text-color, 0.75)
 
 
@@ -153,9 +153,10 @@ body
   transform-style: preserve-3d
   perspective: $perspective
 
+  &.small
+    perspective: $perspective * 0.75
   &.wide
     perspective: $perspective * 2
-
   &.extra-wide
     perspective: $perspective * 4
 
@@ -168,13 +169,15 @@ body
     outline: 1px solid transparent
     backface-visibility: hidden
     transition: outline-color 0.5s, transform 0.5s
-
   & .front
     z-index: 2
-
   & .back
     z-index: 1
     transform: rotateY(180deg)
+    & .msg
+      line-height: 1.3
+      display: inline-block
+      vertical-align: middle
 
   &:hover .front, &:hover .back
     outline-color: rgba(white, 0.85)
@@ -184,23 +187,80 @@ body
     transform: rotateY(0)
 
 
-  &.home .front, &.home .back
-    background-color: $color-home
-  &.about .front, &.about .back
-    background-color: $color-about
-  &.portfolio .front, &.portfolio .back
-    background-color: $color-portfolio
-  &.photos .front, &.photos .back
-    background-color: $color-photos
-  &.testimomials .front, &.testimomials .back
-    background-color: $color-testimomials
-  &.hr .front, &.hr .back
-    background-color: $color-hr
-  &.blog .front, &.blog .back
-    background-color: $color-blog
-  &.contacts .front, &.contacts .back
-    background-color: $color-contacts
+.tile
+  & .icon
+    display: inline-block
+    vertical-align: middle
+    margin-top: -10px
 
+  & .title
+    display: block
+    position: absolute
+    left: 10px
+    bottom: 10px
+    font-size: 12pt
+    line-height: 1
+
+
+  &.home
+    & .front, & .back
+      background-color: $color-home
+    & .icon
+      @include home-icon()
+      width: 52px
+      height: 54px
+
+  &.about
+    & .front, & .back
+      background-color: $color-about
+    & .icon
+      @include about-icon()
+      width: 50px
+      height: 63px
+
+  &.portfolio
+    & .front, & .back
+      background-color: $color-portfolio
+    & .icon
+      @include portfolio-icon()
+      width: 57px
+      height: 53px
+
+  &.photos
+    & .front, & .back
+      background-color: $color-photos
+    & .icon
+      @include photos-icon()
+      width: 58px
+      height: 54px
+
+  &.testimonials
+    & .front, & .back
+      background-color: $color-testimonials
+    & .icon
+      @include testimonials-icon()
+      width: 56px
+      height: 47px
+
+  &.hr 
+    & .front, & .back
+      background-color: $color-hr
+    & .icon
+      @include hr-icon()
+      width: 54px
+      height: 67px
+
+  &.blog 
+    & .front, & .back
+      background-color: $color-blog
+
+  &.contacts 
+    & .front, & .back
+      background-color: $color-contacts
+    & .icon
+      @include contacts-icon()
+      width: 68px
+      height: 39px
 
   &.facebook .front, &.facebook .back
     background-color: $color-facebook
