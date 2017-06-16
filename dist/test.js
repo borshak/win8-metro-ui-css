@@ -1,1 +1,1 @@
-alert("TEST JS);
+alert("TEST JS");
